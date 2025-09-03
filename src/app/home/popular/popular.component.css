@@ -7,6 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 50px 100px;
+    flex-direction: column;
 }
 
 .home-page-popular-courses-desc{
