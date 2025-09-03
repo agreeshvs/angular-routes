@@ -35,7 +35,8 @@ const routes: Routes = [
   {    path: 'courses',    component: CoursesComponent  },
 
   // wildcard route - home page
-  {    path: '**',    redirectTo: 'home',   pathMatch: 'full'  },
+  {    path: '**',    component: NotFoundComponent  }, // Call when none of the route match
+  // Wildcard route should be the last route in the route array
 ]
 @NgModule({
   declarations: [
