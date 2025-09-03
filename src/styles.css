@@ -50,3 +50,7 @@ body{
     background: #222;
     opacity: 0.3;
 }
+
+button, a{
+    cursor: pointer;
+}

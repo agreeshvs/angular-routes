@@ -33,7 +33,7 @@ const routes: Routes = [
   {    path: 'about',    component: AboutComponent  },
   {    path: 'contact',    component: ContactComponent  },
   {    path: 'courses',    component: CoursesComponent  },
-
+  {    path: 'courses/course/:id',    component: CourseDetailComponent  },
   // wildcard route - home page
   {    path: '**',    component: NotFoundComponent  }, // Call when none of the route match
   // Wildcard route should be the last route in the route array
