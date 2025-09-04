@@ -33,7 +33,14 @@ const routes: Routes = [
   {    path: 'about',    component: AboutComponent  },
   {    path: 'contact',    component: ContactComponent  },
   {    path: 'courses',    component: CoursesComponent  },
-  {    path: 'courses/course/:id',    component: CourseDetailComponent  },
+  // {    path: 'courses/course/:id',    component: CourseDetailComponent  },
+
+  // using child routes for course details
+  { path: 'courses', children: [
+    { path: 'course/:id', component: CourseDetailComponent},
+    { path: 'popular', component: PopularComponent}
+  ]},
+
   // wildcard route - home page
   {    path: '**',    component: NotFoundComponent  }, // Call when none of the route match
   // Wildcard route should be the last route in the route array

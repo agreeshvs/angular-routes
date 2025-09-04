@@ -21,6 +21,7 @@ h2{
     color:#FBFCFC;
     display: flex;
     top: 39px;
+    position: relative;
 }
 .page-header-logo{
     margin: 10px 0px;
