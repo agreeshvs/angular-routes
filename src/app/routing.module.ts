@@ -8,6 +8,7 @@ import { CourseDetailComponent } from "./courses/course-detail/course-detail.com
 import { PopularComponent } from "./home/popular/popular.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { NgModule } from "@angular/core";
+import { LoginComponent } from "./login/login.component";
 
 
 
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'course/:id', component: CourseDetailComponent},
     { path: 'popular', component: PopularComponent}
   ]},
+  { path: 'login', component: LoginComponent},
 
   // wildcard route - home page
   {    path: '**',    component: NotFoundComponent  }, // Call when none of the route match
