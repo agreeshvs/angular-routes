@@ -11,7 +11,7 @@ import { NgModule } from "@angular/core";
 import { LoginComponent } from "./login/login.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { AuthGuardService } from "./Services/authguard.service";
-import { canActivate } from "./auth.guard";
+import { canActivate, canActivateChild } from "./auth.guard";
 
 
 
@@ -29,16 +29,28 @@ const routes: Routes = [
   // {    path: 'courses/course/:id',    component: CourseDetailComponent  },
 
   // using child routes for course details
-  { path: 'courses', children: [
+  // canActivateChild protects all the child routes
+  // canActivate protects only the specified route including child routes
+  /* { path: 'courses', canActivateChild: [AuthGuardService], children: [
+    { path: 'course/:id', component: CourseDetailComponent},
+    { path: 'popular', component: PopularComponent},
+    {
+      path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
+    },
+    {
+      path: 'checkout', component: CheckoutComponent
+    }
+  ] } */,
+  { path: 'courses', canActivateChild: [canActivateChild], children: [
     { path: 'course/:id', component: CourseDetailComponent},
     { path: 'popular', component: PopularComponent},
     /* {
       path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
     } */
     {
-      path: 'checkout', component: CheckoutComponent, canActivate: [canActivate]
+      path: 'checkout', component: CheckoutComponent
     }
-  ]},
+  ] },
   { path: 'login', component: LoginComponent},
 
   // wildcard route - home page
