@@ -20,24 +20,10 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RouterModule, Routes } from '@angular/router';
+import { RoutingModule } from './routing.module';
 
 
-// Define Routes Here
-const routes: Routes = [
-  // Default Route
-  // {    path: '',    component: HomeComponent  },
 
-  // Redirect Route
-  {    path: '',    redirectTo: 'home',   pathMatch: 'full'  },
-  {    path: 'home',    component: HomeComponent  },
-  {    path: 'about',    component: AboutComponent  },
-  {    path: 'contact',    component: ContactComponent  },
-  {    path: 'courses',    component: CoursesComponent  },
-  {    path: 'courses/course/:id',    component: CourseDetailComponent  },
-  // wildcard route - home page
-  {    path: '**',    component: NotFoundComponent  }, // Call when none of the route match
-  // Wildcard route should be the last route in the route array
-]
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,12 +41,12 @@ const routes: Routes = [
     CourseDetailComponent,
     LoginComponent,
     NotFoundComponent,
-    CheckoutComponent
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RoutingModule
   ],
   providers: [ServicesService, CourseService],
   bootstrap: [AppComponent]
