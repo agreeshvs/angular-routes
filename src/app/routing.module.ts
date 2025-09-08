@@ -9,6 +9,8 @@ import { PopularComponent } from "./home/popular/popular.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { NgModule } from "@angular/core";
 import { LoginComponent } from "./login/login.component";
+import { CheckoutComponent } from "./checkout/checkout.component";
+import { AuthGuardService } from "./Services/authguard.service";
 
 
 
@@ -28,7 +30,10 @@ const routes: Routes = [
   // using child routes for course details
   { path: 'courses', children: [
     { path: 'course/:id', component: CourseDetailComponent},
-    { path: 'popular', component: PopularComponent}
+    { path: 'popular', component: PopularComponent},
+    {
+      path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
+    }
   ]},
   { path: 'login', component: LoginComponent},
 
