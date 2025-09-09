@@ -1,6 +1,7 @@
 import { inject } from "@angular/core";
 import { AuthService } from "./Services/auth.service";
 import { Router } from "@angular/router";
+import { ContactComponent } from "./contact/contact.component";
 
 export const canActivate = () => {
     const authService: AuthService = inject(AuthService);
@@ -17,4 +18,8 @@ export const canActivate = () => {
 
 export const canActivateChild = () => {
     return canActivate();
+}
+
+export const canDeactivate = (component: ContactComponent) => {
+    return component.canExit();
 }
