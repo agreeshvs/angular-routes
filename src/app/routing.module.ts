@@ -26,6 +26,7 @@ const routes: Routes = [
   {    path: 'home',    component: HomeComponent  },
   {    path: 'about',    component: AboutComponent  },
   {    path: 'contact',    component: ContactComponent, canDeactivate: [ canDeactivate]  },
+  // {    path: 'contact',    component: ContactComponent, canDeactivate: [ (comp: ContactComponent) => {return comp.canExit();}]  },
   {    path: 'courses',    component: CoursesComponent  },
   // {    path: 'courses/course/:id',    component: CourseDetailComponent  },
 
