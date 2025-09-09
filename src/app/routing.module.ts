@@ -24,7 +24,7 @@ const routes: Routes = [
   {    path: '',    redirectTo: 'home',   pathMatch: 'full'  },
   {    path: 'home',    component: HomeComponent  },
   {    path: 'about',    component: AboutComponent  },
-  {    path: 'contact',    component: ContactComponent  },
+  {    path: 'contact',    component: ContactComponent, canDeactivate: [AuthGuardService]  },
   {    path: 'courses',    component: CoursesComponent  },
   // {    path: 'courses/course/:id',    component: CourseDetailComponent  },
 
@@ -34,9 +34,9 @@ const routes: Routes = [
   /* { path: 'courses', canActivateChild: [AuthGuardService], children: [
     { path: 'course/:id', component: CourseDetailComponent},
     { path: 'popular', component: PopularComponent},
-    {
-      path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
-    },
+    //{
+   //   path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
+   // },
     {
       path: 'checkout', component: CheckoutComponent
     }
