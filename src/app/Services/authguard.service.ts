@@ -1,8 +1,10 @@
 import { inject, Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanDeactivateFn, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanDeactivateFn, Resolve, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { map, Observable } from "rxjs";
 import { AuthService } from "./auth.service";
 import { ContactComponent } from "../contact/contact.component";
+import { Course } from "../Models/course";
+import { CourseService } from "./course.service";
 
 export interface IDActivateComponent{
     canExit: () => boolean | Observable<boolean> | Promise<boolean>;
@@ -11,9 +13,10 @@ export interface IDActivateComponent{
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate, CanActivateChild, CanDeactivate<IDActivateComponent> {
+export class AuthGuardService implements CanActivate, CanActivateChild, CanDeactivate<IDActivateComponent>, Resolve<Course[]> {
     authService: AuthService = inject(AuthService);
     router: Router = inject(Router);
+    courseService: CourseService = inject(CourseService);
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     boolean 
     /* | Observable<boolean> | Promise<boolean> */
@@ -47,5 +50,14 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanDeact
     ): boolean | Observable<boolean> | Promise<boolean> {
         // Add your authentication logic here
         return component.canExit();
+    }
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Course [] | Observable<Course[]> | Promise<Course[]>     {
+        let courseList: Course[] = [];
+        /* this.courseService.getAllcourses().subscribe( (courses: Course[]) => {
+            courseList = courses;
+        });
+        return courseList; */
+        return this.courseService.getAllcourses();
     }
 }

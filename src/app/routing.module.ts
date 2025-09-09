@@ -18,37 +18,16 @@ import { AuthService } from "./Services/auth.service";
 
 // Define Routes Here
 const routes: Routes = [
-  // Default Route
-  // {    path: '',    component: HomeComponent  },
 
   // Redirect Route
   {    path: '',    redirectTo: 'home',   pathMatch: 'full'  },
   {    path: 'home',    component: HomeComponent  },
   {    path: 'about',    component: AboutComponent  },
   {    path: 'contact',    component: ContactComponent, canDeactivate: [ canDeactivate]  },
-  // {    path: 'contact',    component: ContactComponent, canDeactivate: [ (comp: ContactComponent) => {return comp.canExit();}]  },
-  {    path: 'courses',    component: CoursesComponent  },
-  // {    path: 'courses/course/:id',    component: CourseDetailComponent  },
-
-  // using child routes for course details
-  // canActivateChild protects all the child routes
-  // canActivate protects only the specified route including child routes
-  /* { path: 'courses', canActivateChild: [AuthGuardService], children: [
-    { path: 'course/:id', component: CourseDetailComponent},
-    { path: 'popular', component: PopularComponent},
-    //{
-   //   path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
-   // },
-    {
-      path: 'checkout', component: CheckoutComponent
-    }
-  ] } */,
+  {    path: 'courses',    component: CoursesComponent, resolve: {courses: AuthGuardService}  },
   { path: 'courses', canActivateChild: [canActivateChild], children: [
     { path: 'course/:id', component: CourseDetailComponent},
     { path: 'popular', component: PopularComponent},
-    /* {
-      path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
-    } */
     {
       path: 'checkout', component: CheckoutComponent
     }
