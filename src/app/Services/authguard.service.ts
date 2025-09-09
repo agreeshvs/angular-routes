@@ -4,10 +4,14 @@ import { Observable } from "rxjs";
 import { AuthService } from "./auth.service";
 import { ContactComponent } from "../contact/contact.component";
 
+export interface IDActivateComponent{
+    canExit: () => boolean | Observable<boolean> | Promise<boolean>;
+}
+
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate, CanActivateChild, CanDeactivate<ContactComponent> {
+export class AuthGuardService implements CanActivate, CanActivateChild, CanDeactivate<IDActivateComponent> {
     authService: AuthService = inject(AuthService);
     router: Router = inject(Router);
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
@@ -35,10 +39,12 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanDeact
        return this.canActivate(childRoute, state);
     }
 
-    canDeactivate(component: ContactComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot):
-    boolean 
-    /* | Observable<boolean> | Promise<boolean> */
-    {
+    canDeactivate(
+        component: IDActivateComponent,
+        currentRoute: ActivatedRouteSnapshot,
+        currentState: RouterStateSnapshot,
+        nextState?: RouterStateSnapshot
+    ): boolean | Observable<boolean> | Promise<boolean> {
         // Add your authentication logic here
         return component.canExit();
     }
