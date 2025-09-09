@@ -11,7 +11,7 @@ import { NgModule } from "@angular/core";
 import { LoginComponent } from "./login/login.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { AuthGuardService } from "./Services/authguard.service";
-import { canActivate, canActivateChild, canDeactivate } from "./auth.guard";
+import { canActivate, canActivateChild, canDeactivate, resolve } from "./auth.guard";
 import { AuthService } from "./Services/auth.service";
 
 
@@ -24,7 +24,8 @@ const routes: Routes = [
   {    path: 'home',    component: HomeComponent  },
   {    path: 'about',    component: AboutComponent  },
   {    path: 'contact',    component: ContactComponent, canDeactivate: [ canDeactivate]  },
-  {    path: 'courses',    component: CoursesComponent, resolve: {courses: AuthGuardService}  },
+  // {    path: 'courses',    component: CoursesComponent, resolve: {courses: AuthGuardService}  },
+  {    path: 'courses',    component: CoursesComponent, resolve: {courses: resolve}  },
   { path: 'courses', canActivateChild: [canActivateChild], children: [
     { path: 'course/:id', component: CourseDetailComponent},
     { path: 'popular', component: PopularComponent},

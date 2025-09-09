@@ -2,6 +2,7 @@ import { inject } from "@angular/core";
 import { AuthService } from "./Services/auth.service";
 import { Router } from "@angular/router";
 import { ContactComponent } from "./contact/contact.component";
+import { CourseService } from "./Services/course.service";
 
 export const canActivate = () => {
     const authService: AuthService = inject(AuthService);
@@ -22,4 +23,9 @@ export const canActivateChild = () => {
 
 export const canDeactivate = (component: ContactComponent) => {
     return component.canExit();
+}
+
+export const resolve = () => {
+    const courseService: CourseService = inject(CourseService);
+    return courseService.getAllcourses();
 }
