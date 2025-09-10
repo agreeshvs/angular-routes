@@ -22,21 +22,25 @@ export class CoursesComponent implements OnInit {
     // Alternative way to read query parameter value
     /* this.searchString = this.activeRoute.snapshot.queryParamMap.get('search') || '';
     console.log(this.searchString); */
+    
 
     this.activeRoute.queryParamMap.subscribe( (params) => {
       this.searchString = params.get('search') || '';
       console.log(this.searchString);
       // Conditions to filter the courses.
       if( this.searchString == undefined || this.searchString.trim() == ''){
-        this.AllCourses = this.coursesService.courses;
-      } else{
-        this.AllCourses = this.coursesService.courses.filter(
-          // filter all courses whose title contains the search string
-          course => course.title.toLowerCase().includes(
-            this.searchString.toLocaleLowerCase()
-          )
-        );
-      }
+            /* this.coursesService.getAllcourses().subscribe( (data) =>{
+                this.AllCourses = data;
+            }); */
+            this.AllCourses = this.activeRoute.snapshot.data['courses'];
+          } else{
+            this.AllCourses = this.coursesService.courses.filter(
+              // filter all courses whose title contains the search string
+              course => course.title.toLowerCase().includes(
+                this.searchString.toLocaleLowerCase()
+              )
+            );
+          }
     })
 
     

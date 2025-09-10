@@ -39,8 +39,8 @@
             <a routerLink="/courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">COURSES</a>
         </div>
         <div class="page-header-login-logout">
-            <a routerLink="login">LOGIN</a>
-            <a routerLink="login" [queryParams]="{logout: true}">LOGOUT</a>
+            <a routerLink="login" *ngIf="!authService.isAuthenticated();">LOGIN</a>
+            <a routerLink="login" *ngIf="authService.isAuthenticated();" [queryParams]="{logout: true}">LOGOUT</a>
         </div>
       </div>
       
