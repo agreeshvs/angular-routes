@@ -21,6 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RoutingModule } from './routing.module';
+import { AdminComponent } from './admin/admin.component';
+import { StudentService } from './Services/student.service';
 
 
 
@@ -42,13 +44,14 @@ import { RoutingModule } from './routing.module';
     LoginComponent,
     NotFoundComponent,
     CheckoutComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RoutingModule
   ],
-  providers: [ServicesService, CourseService],
+  providers: [ServicesService, CourseService, StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
