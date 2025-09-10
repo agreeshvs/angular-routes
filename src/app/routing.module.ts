@@ -30,7 +30,9 @@ const routes: Routes = [
     { path: 'course/:id', component: CourseDetailComponent},
     { path: 'popular', component: PopularComponent},
     {
-      path: 'checkout', component: CheckoutComponent
+      path: 'checkout', component: CheckoutComponent, data: {
+        name: 'Test course', price: 399
+      }
     }
   ] },
   { path: 'login', component: LoginComponent},
