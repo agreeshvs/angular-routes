@@ -24,6 +24,7 @@ import { RoutingModule } from './routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { StudentService } from './Services/student.service';
 import { PercentagePipe } from './Pipes/percentage.pipe';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 
 
@@ -46,7 +47,8 @@ import { PercentagePipe } from './Pipes/percentage.pipe';
     NotFoundComponent,
     CheckoutComponent,
     AdminComponent,
-    PercentagePipe
+    PercentagePipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

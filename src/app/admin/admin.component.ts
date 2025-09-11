@@ -33,6 +33,7 @@ export class AdminComponent implements OnInit {
   @ViewChild('editCourse') editCourse: ElementRef;
   @ViewChild('editMarks') editMarks: ElementRef;
   @ViewChild('editFee') editFee: ElementRef;
+  filterText: any = 'All';
 
   ngOnInit(){
     this.students = this.studentService.students;
