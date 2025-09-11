@@ -36,7 +36,7 @@ export class AdminComponent implements OnInit {
   filterText: any = 'All';
 
   ngOnInit(){
-    this.students = this.studentService.students;
+    this.students = this.studentService.filterStudent(this.filterText);
     this.totalMarks = this.studentService.totalMarks;
   }
 
@@ -55,8 +55,9 @@ export class AdminComponent implements OnInit {
       this.Marks.nativeElement.value, 
       this.Fee.nativeElement.value
     );
-    this.students = this.studentService.students;
+    // this.students = this.studentService.students;
     this.isInserting = false;
+    this.students = this.studentService.filterStudent(this.filterText)
   }
 
   OnEditClicked(stdId: number){
@@ -76,5 +77,11 @@ export class AdminComponent implements OnInit {
       student.fee = this.editFee.nativeElement.value;
 
       this.isEditing = false;
+      this.students = this.studentService.filterStudent(this.filterText)
+  }
+
+  onFilterChange(event){
+    this.filterText = event.target.value;
+    this.students = this.studentService.filterStudent(event.target.value)
   }
 }

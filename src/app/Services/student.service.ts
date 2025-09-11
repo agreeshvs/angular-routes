@@ -21,4 +21,16 @@ export class StudentService{
         studentCopy.push(student);
         this.students = studentCopy;
     }
+
+
+    filterStudent( filterBy: any){
+        console.log("Filter called");
+        
+        if( filterBy.toLowerCase() === 'all' || filterBy === '' || this.students.length === 0){
+            return this.students;
+        }
+        else{
+            return this.students.filter( item => item.gender.toLowerCase() === filterBy.toLowerCase())
+        }
+    }
 }
