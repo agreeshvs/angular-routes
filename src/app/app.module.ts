@@ -23,6 +23,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RoutingModule } from './routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { StudentService } from './Services/student.service';
+import { PercentagePipe } from './Pipes/percentage.pipe';
 
 
 
@@ -44,7 +45,8 @@ import { StudentService } from './Services/student.service';
     LoginComponent,
     NotFoundComponent,
     CheckoutComponent,
-    AdminComponent
+    AdminComponent,
+    PercentagePipe
   ],
   imports: [
     BrowserModule,
