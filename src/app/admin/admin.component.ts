@@ -17,6 +17,12 @@ export class AdminComponent implements OnInit {
   totalMarks: number;
 
   year: number = new Date().getFullYear();
+  totalStudent = new Promise( (resolve,reject)=>{
+    setTimeout(() => {
+      resolve(this.students.length);
+    }, 2000);
+  });
+
   
   //PROPERTIES FOR INSERTING
   @ViewChild('name') Name: ElementRef;
